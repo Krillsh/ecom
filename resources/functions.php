@@ -85,7 +85,7 @@ $product = <<<DELIMETER
             </h4>
             <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
 
-            <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to cart</a>
+            <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['product_id']}">Add to cart</a>
         </div>
 
     </div>
@@ -163,9 +163,9 @@ if(isset($_POST['submit'])){
     if(mysqli_num_rows($query) == 0) {
         set_message("Your Password or Username was incorrect");
         redirect("login.php");
-    }
-    else{
-        set_message("Welcome {$username}");
+    } else{
+
+        $_SESSION['username'] =$username;
         redirect("admin");
     }
     

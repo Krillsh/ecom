@@ -1,4 +1,4 @@
-<?php require_once("../resources/config.php"); ?>
+<?php require_once("config.php"); ?>
 
 <?php
 
@@ -12,13 +12,13 @@ confirm($query);
         if($row['product_quantity'] != $_SESSION['product_'. $_GET['add']]){
             
              $_SESSION['product_'. $_GET['add']] +=1;
-            redirect("checkout.php");
+            redirect("../public/checkout.php");
         }
         
         else {
           
             set_message("We only have " . $row['product_quantity'] . " ". " available");
-            redirect("checkout.php");
+            redirect("../public/checkout.php");
         }
     }
     
@@ -37,11 +37,11 @@ if(isset($_GET['remove'])) {
         unset($_SESSION['item_quantity']);
 
         
-        redirect("checkout.php");
+        redirect("../public/checkout.php");
     }
     
     else{
-        redirect("checkout.php");
+        redirect("../public/checkout.php");
     }
 }
 
@@ -52,7 +52,7 @@ if(isset($_GET['delete'])) {
         unset($_SESSION['item_quantity']);
 
     
-    redirect("checkout.php");
+    redirect("../public/checkout.php");
     
 }
 
