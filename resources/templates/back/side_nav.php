@@ -3,7 +3,7 @@
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li class="">
-                        <a href="index.php?orders"><i class="fa fa-fw fa-dashboard"></i> Orders</a>
+                        <a href="index.php?orders"><i class="fa fa-fw fa-shopping-cart"></i></i> Orders</a>
                     </li>
                     <li>
                         <a href="index.php?products"><i class="fa fa-fw fa-bar-chart-o"></i> View Products</a>
