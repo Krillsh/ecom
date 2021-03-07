@@ -6,7 +6,7 @@
 
 <?php
 
-    report();
+    proccess_transaction();
 ?>
 
     <!-- Page Content -->

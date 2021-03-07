@@ -210,6 +210,80 @@ function send_message(){
 
 /******************************* BACK END FUNCTIONS****************************/
     
+function display_orders () {
 
+    $query = query("SELECT * FROM orders");
+    confirm($query);
+
+    while($row = fetch_array($query)) {
+
+        $orders = <<<DELIMITER
+    <tr>
+        <th>{$row['order_id']}</th>
+        <th>{$row['order_amount']}</th>
+        <th>{$row['order_transaction']}</th>
+        <th>{$row['order_currency']}</th>
+        <th>{$row['order_status']}</th>
+        <td><a class="btn btn-danger" href="../../resources/templates/back/delete_order.php?id={$row['order_id']}"><span class="glyphicon glyphicon-remove" ></span></a></td>
+    </tr>
+
+    DELIMITER;
+    
+    echo $orders;
+    }
+}
+
+
+/********** Admin Products *************/
+
+function get_products_in_admin(){
+
+$query = query("SELECT * FROM products");
+confirm($query);
+    
+while($row = fetch_array($query)) {
+    
+$product = <<<DELIMETER
+    <tr>
+        <td>{$row['product_id']}</td>
+        <td>{$row['product_title']} <br>
+        <a href="index.php?edit_product&id={$row['product_id']}"><img src="{$row['product_image']}" alt=""></a>
+        </td>
+        <td>Category</td>
+        <td>{$row['product_price']}</td>
+        <td>{$row['product_quantity']}</td>
+        <td><a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove" ></span></a></td>
+    </tr>
+
+DELIMETER;
+
+echo $product;    
+    
+}
+
+}
+
+
+/***********************************  Add products in admin ***********/
+
+function add_product(){
+
+    if(isset($_POST['publish'])) {
+
+       $product_title           = escape_string($_POST['product_title']);
+        $product_category_id    = escape_string($_POST['product_category_id']);
+        $product_price          = escape_string($_POST['product_price']);
+        $product_quantity       = escape_string($_POST['product_quantity']);
+        $product_description    = escape_string($_POST['product_description']);
+        $short_desc             = escape_string($_POST['short_desc']);
+        $product_image          = escape_string($_FILES['file']['name']);
+        $image_temp_location    = escape_string($_FILES['file']['tmp_name']);
+
+        $query = query("INSERT INTO products (product_title, product_category_id, product_price, product_description, product_image, short_desc) 
+        VALUES('{$product_title}', '{$product_category_id}', '{$product_price}', '{$product_description}, {'$product_image'}', {'$short_desc')");
+
+    }
+
+}
 
 ?>
