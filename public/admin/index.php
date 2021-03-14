@@ -50,12 +50,6 @@ redirect("../../public");
 
                     }
 
-                    if(isset($_GET['users.php'])) {
-
-                        include(TEMPLATE_BACK . "/users.php");
-
-                    }
-
                     if(isset($_GET['reports.php'])) {
 
                         include(TEMPLATE_BACK . "/reports.php");
@@ -65,6 +59,12 @@ redirect("../../public");
                     if(isset($_GET['edit_product'])) {
 
                         include(TEMPLATE_BACK . "/edit_product.php");
+
+                    }
+
+                    if(isset($_GET['users'])) {
+
+                        include(TEMPLATE_BACK . "/users.php");
 
                     }
                 ?>

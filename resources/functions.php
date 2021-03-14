@@ -1,5 +1,7 @@
 <?php
 
+require_once("config.php");
+
 $upload_directory = "uploads";
 
 //helper functions
@@ -128,9 +130,43 @@ function get_categories(){
             echo $categories_links;
         }
 }
-   
 
- 
+function get_products_in_cat_page() {
+
+
+    $query = query(" SELECT * FROM products WHERE product_category_id = " . escape_string($_GET['id']) . " AND product_quantity >= 1 ");
+    confirm($query);
+    
+    while($row = fetch_array($query)) {
+    
+    $product_image = display_image($row['product_image']);
+    
+    $product = <<<DELIMETER
+    
+    
+                <div class="col-md-3 col-sm-6 hero-feature">
+                    <div class="thumbnail">
+                        <img src="../resources/{$product_image}" alt="">
+                        <div class="caption">
+                            <h3>{$row['product_title']}</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>
+                                <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Buy Now!</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+    DELIMETER;
+    
+    echo $product;
+    
+    
+            }
+    
+    
+    }
+
 function get_products_in_shop_page(){
     
 $query = query("SELECT * FROM products");
@@ -411,6 +447,7 @@ $category = <<<DELIMITER
 <tr>
     <td>{$cat_id}</td>
     <td>{$cat_title}</td>
+    <td><a class="btn btn-danger" href="../../resources/templates/back/delete_category.php?id={$row['cat_id']}"><span class="glyphicon glyphicon-remove" ></span></a></td>
 </tr>
 
 DELIMITER;
@@ -430,13 +467,15 @@ $cat_title = escape_string($_POST['cat_title']);
     
     } else {
 
-$insert_cat = query("INSERT INTO categories (cat_title) VALUES('{$cat_title}') ");
+$insert_cat = query("INSERT INTO categories (cat_title) VALUES('{$cat_title}')");
 confirm($insert_cat);
 set_message("Category Created");
 
 
 
-    redirect("index.php?categories");
+
+
+    redirect("../../../public/admin/index.php?categories");
 
     }
 

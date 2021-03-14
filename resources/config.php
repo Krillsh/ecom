@@ -13,6 +13,8 @@ defined("TEMPLATE_BACK") ? null : define("TEMPLATE_BACK", __DIR__ . DS . "templa
 
 defined("UPLOAD_DIRECTORY") ? null : define("UPLOAD_DIRECTORY", __DIR__ . DS . "uploads");
 
+define("ROOT", __DIR__ . DS . "..");
+
 //DB-inlogg
 defined("DB_HOST") ? null : define("DB_HOST", "localhost" );
 

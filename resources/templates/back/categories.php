@@ -17,8 +17,8 @@
     
 <h3 class="bg-success"><?php display_message(); ?></h3>
     
-    <form action="" method="post">
-    
+    <form action="../../resources/templates/back/add_category.php" method="post">
+
         <div class="form-group">
             <label for="category-title">Title</label>
             <input name="cat_title" type="text" class="form-control">

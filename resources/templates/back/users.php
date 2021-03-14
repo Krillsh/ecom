@@ -1,8 +1,5 @@
-        <div id="page-wrapper">
 
-            <div class="container-fluid">
-
-
+<?php require_once("../../resources/config.php"); ?>
 
                     <div class="col-lg-12">
                       
@@ -32,7 +29,7 @@
                                 </thead>
                                 <tbody>
 
-                                <?php foreach($users as $user): ?>
+                                <?php   /***** foreach($users as $user):    **/ ?>
 
                                     <tr>
 
@@ -55,7 +52,7 @@
                                     </tr>
 
 
-                                <?php endforeach; ?>
+                                <?php /****  endforeach; ***/ ?> 
 
 
                                     
@@ -66,12 +63,7 @@
 
                         </div>
 
-
-
-
-
-
-
+                        </div>
 
 
 
@@ -84,14 +76,3 @@
 
 
 
-
-
-
-
-
-
-            </div>
-            <!-- /.container-fluid -->
-
-        </div>
-        <!-- /#page-wrapper -->
