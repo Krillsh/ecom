@@ -522,7 +522,7 @@ function display_users(){
             //$user_photo = $_FILES['file']['name'];
             //$photo_temp = $FILES['file']['tmp_name'];
 
-            move_uploaded_file($photo_temp, UPLOAD_DIRECTORY . DS . $user_photo);
+            //move_uploaded_file($photo_temp, UPLOAD_DIRECTORY . DS . $user_photo);
 
             $query = query("INSERT INTO users(username, email, password) VALUES('{$username}', '{$email}', '{$password}')");
             confirm($query);
